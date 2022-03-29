@@ -1,6 +1,7 @@
 package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
+import ru.netology.manager.ProductManager;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +17,6 @@ class ProductTest {
 
     ProductRepository repo = new ProductRepository();
     ProductManager manager = new ProductManager(repo);
-    Book book = new Book();
     Smartphone phone = new Smartphone();
 
     @Test
@@ -136,6 +136,102 @@ class ProductTest {
         String actual = phone.PhoneName;
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByAuthorSeveralElements() {
+
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item4);
+        repo.save(item6);
+
+        Product[] expected = {item4};
+        Product[] actual = manager.searchBy("Линус Торвальдс");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByAuthorOneElement() {
+
+        repo.save(item4);
+
+        Product[] expected = {item4};
+        Product[] actual = manager.searchBy("Линус Торвальдс");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByAuthorEmpty() {
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Линус Торвальдс");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByAuthorNoResults() {
+
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item4);
+        repo.save(item6);
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Линус Торвальдс!!!");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByVendorSeveralElements() {
+
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item4);
+        repo.save(item6);
+
+        Product[] expected = {item1, item2};
+        Product[] actual = manager.searchBy("PINE64");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByVendorOneElement() {
+
+        repo.save(item1);
+
+        Product[] expected = {item1};
+        Product[] actual = manager.searchBy("PINE64");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByVendorEmpty() {
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("PINE64");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByVendorNoResults() {
+
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item4);
+        repo.save(item6);
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("PINE641");
+
+        assertArrayEquals(expected, actual);
     }
 
 }

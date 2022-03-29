@@ -1,8 +1,6 @@
 package ru.netology.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import ru.netology.repository.ProductRepository;
 
 
 public class Product {
@@ -12,8 +10,8 @@ public class Product {
     private int price;
 
 
-
-    public Product() {}
+    public Product() {
+    }
 
     public Product(int id, String name, int price) {
         this.id = id;
@@ -21,8 +19,36 @@ public class Product {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public static boolean matches(Product product, String search) {
+        if (product.getName().contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

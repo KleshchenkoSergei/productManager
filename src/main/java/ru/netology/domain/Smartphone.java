@@ -1,8 +1,7 @@
 package ru.netology.domain;
 
 
-
-public class Smartphone extends Product{
+public class Smartphone extends Product {
 
     String PhoneName;
     String vendor;
@@ -17,8 +16,21 @@ public class Smartphone extends Product{
         this.vendor = vendor;
     }
 
+    public String getVendor() {
+        return vendor;
+    }
+
     public void setPhoneName(String phoneName) {
         PhoneName = phoneName;
+    }
+
+    public static boolean matches(Product product, String search) {
+        Smartphone smartphone = (Smartphone) product;
+        if (smartphone.getVendor().contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

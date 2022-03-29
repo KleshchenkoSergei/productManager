@@ -6,11 +6,8 @@ import ru.netology.domain.Smartphone;
 
 public class ProductRepository {
 
-    public ProductRepository() {}
-
     private Product[] items = new Product[0];
 
-    //save
     public void save(Product item) {
 
         int length = items.length + 1;
@@ -24,7 +21,6 @@ public class ProductRepository {
         items = tmp;
     }
 
-    //findAAll
     public Product[] findAll() {
         return items;
     }
