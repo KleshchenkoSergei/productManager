@@ -1,6 +1,7 @@
 package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
+import ru.netology.manager.ProductManager;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -127,15 +128,5 @@ class ProductTest {
 
         assertArrayEquals(expected, actual);
     }
-
-    @Test
-    public void shouldSetGetPhoneName() {
-
-        phone.setPhoneName("PINEPHONE PRO+");
-        String expected = "PINEPHONE PRO+";
-        String actual = phone.PhoneName;
-
-        assertEquals(expected, actual);
-    }
-
+    
 }

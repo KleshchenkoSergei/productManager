@@ -2,8 +2,8 @@ package ru.netology.domain;
 
 public class Smartphone extends Product {
 
-    String PhoneName;
-    String vendor;
+    private String PhoneName;
+    private String vendor;
 
     public Smartphone() {
         super();
@@ -19,4 +19,7 @@ public class Smartphone extends Product {
         PhoneName = phoneName;
     }
 
+    public String getPhoneName() {
+        return PhoneName;
+    }
 }

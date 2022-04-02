@@ -2,8 +2,8 @@ package ru.netology.domain;
 
 public class Book extends Product {
 
-    String bookName;
-    String author;
+    private String bookName;
+    private String author;
 
     public Book() {
         super();
