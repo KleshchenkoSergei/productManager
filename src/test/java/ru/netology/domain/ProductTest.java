@@ -18,6 +18,7 @@ class ProductTest {
     ProductRepository repo = new ProductRepository();
     ProductManager manager = new ProductManager(repo);
     Smartphone phone = new Smartphone();
+    Book book = new Book();
 
     @Test
     public void shouldSaveEmpty() {
@@ -37,6 +38,21 @@ class ProductTest {
         repo.save(item4);
 
         Product[] expected = new Product[]{item1, item4};
+        Product[] actual = repo.findAll();
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldRemoveById() {
+
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item3);
+        repo.save(item4);
+        repo.removeById(3);
+
+        Product[] expected = new Product[]{item1, item2, item4};
         Product[] actual = repo.findAll();
 
         assertArrayEquals(expected, actual);
@@ -126,16 +142,6 @@ class ProductTest {
         Product[] actual = manager.searchBy("");
 
         assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetGetPhoneName() {
-
-        phone.setPhoneName("PINEPHONE PRO+");
-        String expected = "PINEPHONE PRO+";
-        String actual = phone.PhoneName;
-
-        assertEquals(expected, actual);
     }
 
     @Test
@@ -233,5 +239,46 @@ class ProductTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldMatchesBookTrue() {
+
+        boolean expected = true;
+        Product product = item4;
+        boolean actual = book.matches(product,"Линус Торвальдс");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMatchesBookFalse() {
+
+        boolean expected = false;
+        Product product = item1;
+        boolean actual = book.matches(product,"PINE64");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMatchesSmartphoneTrue() {
+
+        boolean expected = true;
+        Product product = item1;
+        boolean actual = phone.matches(product,"PINE64");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldMatchesSmartphoneFalse() {
+
+        boolean expected = false;
+        Product product = item4;
+        boolean actual = phone.matches(product,"Линус Торвальдс");
+
+        assertEquals(expected, actual);
+    }
+
 
 }

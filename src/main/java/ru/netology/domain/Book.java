@@ -4,8 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class Book extends Product {
 
-    String bookName;
-    String author;
+    private String bookName;
+    private String author;
 
     public Book() {
         super();
@@ -38,13 +38,17 @@ public class Book extends Product {
         this.author = author;
     }
 
-    public static boolean matches(Product product, String search) {
-        Book book = (Book) product;
-        if (book.getAuthor().contains(search)) {
+    @Override
+    public boolean matches(Product product, String search) {
+        if (super.matches(product, search)) {
             return true;
-        } else {
-            return false;
         }
+        if (product instanceof Book) {
+            if (((Book) product).getAuthor().contains(search)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

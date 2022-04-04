@@ -24,13 +24,17 @@ public class Smartphone extends Product {
         PhoneName = phoneName;
     }
 
-    public static boolean matches(Product product, String search) {
-        Smartphone smartphone = (Smartphone) product;
-        if (smartphone.getVendor().contains(search)) {
+    @Override
+    public boolean matches(Product product, String search) {
+        if (super.matches(product, search)) {
             return true;
-        } else {
-            return false;
         }
+        if (product instanceof Smartphone) {
+            if (((Smartphone) product).getVendor().contains(search)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

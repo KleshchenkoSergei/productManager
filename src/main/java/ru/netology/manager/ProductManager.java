@@ -19,35 +19,15 @@ public class ProductManager {
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
-        for (Product product : repository.findAll()) {
-
-            if (Product.matches(product, text)) {
-                result = calc(result, product);
-            } else {
-                if (product instanceof Book) {
-                    if (Book.matches(product, text)) {
-                        result = calc(result, product);
-                    }
-                }
-                if (product instanceof Smartphone) {
-                    if (Smartphone.matches(product, text)) {
-                        result = calc(result, product);
-                    }
-                }
+        for (Product product: repository.findAll()) {
+            if (product.matches(product, text)) {
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = product;
+                result = tmp;
             }
         }
         return result;
     }
 
-    public Product[] calc(Product[] result1, Product product) {
-        int length = result1.length + 1;
-        Product[] tmp = new Product[length];
-        for (int i = 0; i < result1.length; i++) {
-            tmp[i] = result1[i];
-        }
-        int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = product;
-        result1 = tmp;
-        return result1;
-    }
 }
