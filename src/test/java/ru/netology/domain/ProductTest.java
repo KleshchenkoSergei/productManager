@@ -17,8 +17,6 @@ class ProductTest {
 
     ProductRepository repo = new ProductRepository();
     ProductManager manager = new ProductManager(repo);
-    Book book = new Book();
-    Smartphone phone = new Smartphone();
 
     @Test
     public void shouldSaveEmpty() {
@@ -66,6 +64,22 @@ class ProductTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldRemoveById() {
+
+        repo.save(item1);
+        repo.save(item2);
+        repo.save(item3);
+        repo.save(item4);
+        repo.removeById(3);
+
+        Product[] expected = new Product[]{item1, item2, item4};
+        Product[] actual = repo.findAll();
+
+        assertArrayEquals(expected, actual);
+    }
+
 
     @Test
     public void shouldSearchByFromOneElement() {
