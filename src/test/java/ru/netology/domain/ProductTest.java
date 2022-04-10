@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
 
-    Smartphone item1 = new Smartphone(1, "Linux. Смартфон PinePhone", 15000, "PINEPHONE", "PINE64");
-    Smartphone item2 = new Smartphone(2, "Смартфон PinePhone PRO", 20000, "PINEPHONE PRO", "PINE64");
-    Smartphone item3 = new Smartphone(3, "Смартфон Fairphone", 57000, "Fairphone", "Fairphone");
-    Book item4 = new Book(4, "Книга Just for fun", 1500, "Just for fun", "Линус Торвальдс");
-    Book item5 = new Book(5, "Книга UNIX изнутри", 1200, "UNIX изнутри", "Ю. Вахалия");
-    Book item6 = new Book(6, "Linux. Книга Операционная система UNIX", 1000, "Операционная система UNIX", "Андрей Робачевский");
+    Smartphone item1 = new Smartphone(1, "Linux. Смартфон PinePhone", 15000, "PINE64");
+    Smartphone item2 = new Smartphone(2, "Смартфон PinePhone PRO", 20000, "PINE64");
+    Smartphone item3 = new Smartphone(3, "Смартфон Fairphone", 57000, "Fairphone");
+    Book item4 = new Book(4, "Книга Just for fun", 1500, "Линус Торвальдс");
+    Book item5 = new Book(5, "Книга UNIX изнутри", 1200, "Ю. Вахалия");
+    Book item6 = new Book(6, "Linux. Книга Операционная система UNIX", 1000,"Андрей Робачевский");
 
     ProductRepository repo = new ProductRepository();
     ProductManager manager = new ProductManager(repo);
