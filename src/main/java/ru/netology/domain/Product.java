@@ -19,6 +19,7 @@ public class Product {
         this.price = price;
     }
 
+
     public int getId() {
         return id;
     }
@@ -49,8 +50,6 @@ public class Product {
         } else {
             return false;
         }
-        // или в одну строку:
-        // return product.getName().contains(search);
     }
 
 }
