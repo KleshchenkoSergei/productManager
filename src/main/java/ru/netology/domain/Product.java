@@ -44,8 +44,8 @@ public class Product {
         return name;
     }
 
-    public boolean matches(Product product, String search) {
-        if (product.getName().contains(search)) {
+    public boolean matches(String search) {
+        if (getName().contains(search)) {
             return true;
         } else {
             return false;

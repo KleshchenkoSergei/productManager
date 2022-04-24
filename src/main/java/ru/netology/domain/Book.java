@@ -24,11 +24,11 @@ public class Book extends Product {
     }
 
     @Override
-    public boolean matches(Product product, String search) {
-        if (super.matches(product, search)) {
+    public boolean matches(String search) {
+        if (super.matches(search)) {
             return true;
         }
-        if (((Book) product).getAuthor().contains(search)) {
+        if (getAuthor().contains(search)) {
             return true;
         } else {
             return false;

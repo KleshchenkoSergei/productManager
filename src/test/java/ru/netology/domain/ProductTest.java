@@ -240,43 +240,4 @@ class ProductTest {
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void shouldMatchesBookTrue() {
-
-        boolean expected = true;
-        Product product = item4;
-        boolean actual = book.matches(product, "Линус Торвальдс");
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldMatchesBookFalse() {
-
-        boolean expected = false;
-        Product product = item4;
-        boolean actual = book.matches(product, "!Линус Торвальдс");
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldMatchesSmartphoneTrue() {
-
-        Product product = item1;
-        boolean actual = phone.matches(product, "PINE64");
-
-        assertTrue(actual);
-    }
-
-    @Test
-    public void shouldMatchesSmartphoneFalse() {
-
-        Product product = item1;
-        boolean actual = phone.matches(product, "1PINE64");
-
-        assertFalse(actual);
-    }
-
-
 }
